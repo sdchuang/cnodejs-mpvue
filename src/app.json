@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/main",
+    "pages/detail/main",
+    "pages/mine/main"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#ff4a40",
+    "borderStyle": "#a9b7b7",
+    "list": [
+      {
+        "pagePath": "pages/index/main",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/mine/main",
+        "text": "我的"
+      }
+    ]
+  }
+}
