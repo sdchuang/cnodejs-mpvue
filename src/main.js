@@ -16,7 +16,7 @@ app.$mount()
 export default {
 	config:{
 		"pages": [
-			"^pages/index/main"
+			"^pages/detail/main"
 		],
 		"window": {
 			"backgroundTextStyle": "light",

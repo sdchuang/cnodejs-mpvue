@@ -1,3 +1,4 @@
 export const api = {
-  topics:'/topics'
+  topics:'/topics',
+  topicDetail:'/topic'
 }

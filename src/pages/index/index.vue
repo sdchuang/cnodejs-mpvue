@@ -8,7 +8,7 @@
 			<swiper :current="topTab" @change="switchContent($event)" :style="{height:clientHeight + 'px'}">
 				<swiper-item v-for="(list,i) in topic" :key="i" class="swip">
 					<scroll-view :style="{height:clientHeight + 'px'}" scroll-y="true">
-						<div class="list" v-for="item in topicList" :key="item.id">
+						<div @click="toDetail(item.id)" class="list" v-for="item in topicList" :key="item.id" >
 							<div class="header">
 								<img :src="item.author.avatar_url">
 							</div>
@@ -83,6 +83,10 @@
 				})
 			}
 		},
+		// onReachBottom() {
+		// 	console.log('hahahhahaha');
+		// 	this.loadMore();
+		// },
 		methods:{
 			switchContent(e){
 				// console.log('switch')
@@ -94,9 +98,9 @@
 				this.topTab = id;
 				this.topics(id);
 			},
-			toDetail(){
+			toDetail(id){
 				wx.navigateTo({
-					url:'../detail/main'
+					url:'../detail/main?id=' + id
 				})
 			},
 			topics(topTab){
@@ -111,6 +115,9 @@
 					this.topicList = [];
 					this.topicList = res;
 				})
+			},
+			loadMore(){
+				this.topicList();
 			}
 		}
 	}
@@ -129,6 +136,7 @@
 			background-color: #f6f6f6;
 			padding: 5px 0;
 			align-items: center;
+			// vertical-align: middle;
 			div{
 				padding: 2px 5px;
 			}
@@ -170,6 +178,7 @@
 						padding: 2px 4px;
 						border-radius: 4px;
 						margin: 0 4px 0 0 ;
+						color: #999;
 					}
 					.top{
 						background-color: #80bd01;
