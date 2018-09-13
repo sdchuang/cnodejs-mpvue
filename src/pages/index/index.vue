@@ -49,12 +49,12 @@
 					},
 					{
 						id:2,
-						title:'求职',
+						title:'招聘',
 						tab:'job',
 					},
 					{
 						id:3,
-						title:'商品',
+						title:'精华',
 						tab:'good',
 					},
 					{
