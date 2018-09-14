@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/mine/main",
+    "pages/myTopic/main",
     "pages/putout/main",
     "pages/index/main",
     "pages/detail/main"

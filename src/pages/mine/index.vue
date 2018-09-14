@@ -12,9 +12,9 @@
 					<div v-show="login" class="log-name">积分:{{score}}</div>
 				</div>
 				<div class="lists">
-					<div class="list">最近创建话题</div>
-					<div class="list">最近参与话题</div>
-					<div class="list">收藏的话题</div>
+					<div class="list" @click="toMyTopic('create')">最近创建话题</div>
+					<div class="list" @click="toMyTopic('join')">最近参与话题</div>
+					<div class="list" @click="toMyTopic('collect')">收藏的话题</div>
 				</div>
 				<div class="lists">
 					<div class="list">关于</div>
@@ -78,6 +78,11 @@
 				this.avat = '';
 				this.login = false;
 				wx.clearStorage();
+			},
+			toMyTopic(type){
+				wx.navigateTo({
+					url:'../myTopic/main?type=' + type
+				})
 			}
 		}
 	}
@@ -133,7 +138,6 @@
 				.list{
 					padding: 10px 20px;
 					font-size: 14px;
-					// color: slategrey;
 					border: 1px solid #f7f7f7;
 					background-color: #fff;
 				}

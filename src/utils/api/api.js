@@ -4,4 +4,5 @@ export const api = {
   accesstoken:'/accesstoken',
   user:'/user',
   putTopics:'/topics',
+  collect:'/topic_collect',
 }
