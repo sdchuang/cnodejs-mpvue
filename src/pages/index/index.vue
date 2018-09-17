@@ -7,7 +7,7 @@
 
 			<swiper :current="topTab" @change="switchContent($event)" :style="{height:clientHeight + 'px'}">
 				<swiper-item v-for="(list,i) in topic" :key="i" class="swip">
-					<scroll-view :style="{height:clientHeight + 'px'}" scroll-y="true">
+					<scroll-view scroll-y="true" :style="{height:clientHeight + 'px'}">
 						<div @click="toDetail(item.id)" class="list" v-for="item in topicList" :key="item.id" >
 							<div class="header">
 								<img :src="item.author.avatar_url">
@@ -72,7 +72,7 @@
 			this.topics();
 			wx.getSystemInfo({
 				success: res => {
-					this.clientHeight = res.windowHeight-29;
+					this.clientHeight = res.windowHeight-33;
 				},
 			})
 		},
@@ -83,10 +83,14 @@
 				})
 			}
 		},
-		// onReachBottom() {
-		// 	console.log('hahahhahaha');
-		// 	this.loadMore();
-		// },
+		onReachBottom() {
+			console.log('searchScrollLower')
+		},
+		onPullDownRefresh() {
+			setTimeout(()=>{
+				wx.stopPullDownRefresh()
+			},20);
+		},
 		methods:{
 			switchContent(e){
 				// console.log('switch')
@@ -117,7 +121,8 @@
 				})
 			},
 			loadMore(){
-				this.topicList();
+				console.log('more');
+				// this.topicList();
 			}
 		}
 	}

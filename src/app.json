@@ -1,17 +1,18 @@
 {
   "pages": [
+    "pages/index/main",
+    "pages/about/main",
     "pages/mine/main",
     "pages/myTopic/main",
     "pages/putout/main",
-    "pages/index/main",
     "pages/detail/main"
-
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#3e97f5",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "onReachBottomDistance": 10
   },
   "tabBar": {
     "color": "#a9b7b7",

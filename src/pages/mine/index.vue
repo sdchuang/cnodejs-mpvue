@@ -17,7 +17,7 @@
 					<div class="list" @click="toMyTopic('collect')">收藏的话题</div>
 				</div>
 				<div class="lists">
-					<div class="list">关于</div>
+					<div class="list" @click="toAbout">关于</div>
 				</div>
 				<div class="lists">
 					 <span></span>
@@ -83,7 +83,12 @@
 				wx.navigateTo({
 					url:'../myTopic/main?type=' + type
 				})
-			}
+			},
+			toAbout(){
+				wx.navigateTo({
+					url:'../about/main'
+				})
+			},
 		}
 	}
 </script>

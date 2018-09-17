@@ -22,7 +22,7 @@ export default {
 			"backgroundTextStyle": "light",
 			"navigationBarBackgroundColor": "#000",
 			"navigationBarTitleText": "WeChat",
-			"navigationBarTextStyle": "black"
+			"navigationBarTextStyle": "black",
 		}
 	}
 }

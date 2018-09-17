@@ -16,6 +16,9 @@
         </div>
       </div>
     </div>
+    <div v-show="empty" class="empty">
+      暂无
+    </div>
   </div>
 </template>
 
@@ -25,6 +28,7 @@ export default {
     return {
       topicList:[],
       type:'',
+      empty:false,
     }
   },
   mounted(){
@@ -32,10 +36,8 @@ export default {
     if(this.type=='collect'){
       this.collect();
     }else{
-      this.topics();
       this.userInfo();
     }
-  
   },
   methods:{
     toDetail(id){
@@ -43,32 +45,21 @@ export default {
         url:'../detail/main?id=' + id
       })
     },
-    topics(topTab){
-      var tabArr = ['','share','job','good','ask'];
-      var data = {
-        page:1,
-        limit:10,
-      }
-      if(topTab) Object.assign(data,{tab:tabArr[topTab]})
-      this.$store.dispatch('get',{url:'topics',params:data})
-      .then(res => {
-        this.topicList = [];
-        this.topicList = res;
-      })
-    },
     userInfo(){
       this.$store.dispatch('get',{url:'user',arg:wx.getStorageSync('userInfo').loginname,params:{}})
       .then(res => {
-        console.log(res);
+        console.log('res',res);
         if(this.type=='create') this.topicList = res.recent_topics;
         else this.topicList = res.recent_replies;
+        if (this.topicList.length==0) this.empty = true;
       })
     },
     collect(){
       this.$store.dispatch('get',{url:'collect',arg:wx.getStorageSync('userInfo').loginname,params:{}})
       .then(res => {
         console.log(res);
-        this.topicList = res.data;
+        this.topicList = res;
+        if (this.topicList.length==0) this.empty = true;
       })
     },
   },
@@ -78,6 +69,12 @@ export default {
   .wrap{
     width: 100%;
     flex-direction: column;
+    .empty{
+      padding: 20px;
+      font-size: 16px;
+      justify-content: center;
+      align-items: center;
+    }
     .list{
 			border-top: 1px solid #f0f0f0;
 			padding: 10px 15px 10px 10px;
@@ -100,7 +97,6 @@ export default {
 				overflow: hidden;
 				.title{
 					font-size: 14px;
-					// width: 200px;
 					overflow: hidden;
 					white-space: nowrap;
 					text-overflow: ellipsis;
