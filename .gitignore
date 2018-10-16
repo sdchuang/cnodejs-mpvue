@@ -6,7 +6,6 @@ yarn-debug.log*
 yarn-error.log*
 .vscode/
 
-static/test.js 
 static/test2.js 
 
 # Editor directories and files
